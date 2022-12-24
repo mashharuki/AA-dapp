@@ -1,10 +1,6 @@
 import { ethers } from "ethers";
 import {
-  ERC20_ABI,
-  getSimpleAccount,
-  getGasFee,
-  printOp,
-  getHttpRpcClient,
+  ERC20_ABI, getGasFee, getHttpRpcClient, getSimpleAccount, printOp
 } from "../../src";
 // @ts-ignore
 import config from "../../config.json";
@@ -53,7 +49,8 @@ async function main() {
   console.log(
     `Batch transferring ${value} ${symbol} to ${dest.length} recipients...`
   );
-
+  
+  // get AccountContract
   const ac = await accountAPI._getAccountContract();
   const op = await accountAPI.createSignedUserOp({
     target: sender,

@@ -1,10 +1,6 @@
 import { ethers } from "ethers";
 import {
-  ERC20_ABI,
-  getSimpleAccount,
-  getGasFee,
-  printOp,
-  getHttpRpcClient,
+  ERC20_ABI, getGasFee, getHttpRpcClient, getSimpleAccount, printOp
 } from "../../src";
 // @ts-ignore
 import config from "../../config.json";
@@ -28,10 +24,10 @@ async function main() {
   ]);
   const amount = ethers.utils.parseUnits(value, decimals);
   console.log(`Transferring ${value} ${symbol}...`);
-
+  // creat user op info
   const op = await accountAPI.createSignedUserOp({
     target: erc20.address,
-    data: erc20.interface.encodeFunctionData("transfer", [to, amount]),
+    data: erc20.interface.encodeFunctionData("transfer", [to, amount]), // transfer method
     ...(await getGasFee(provider)),
   });
   console.log(`Signed UserOperation: ${await printOp(op)}`);

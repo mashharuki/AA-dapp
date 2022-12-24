@@ -1,10 +1,11 @@
-import { getSimpleAccount } from "../../src";
 import { ethers } from "ethers";
+import { getSimpleAccount } from "../../src";
 // @ts-ignore
 import config from "../../config.json";
 
 async function main() {
   const provider = new ethers.providers.JsonRpcProvider(config.rpcUrl);
+  // get simpleAccount
   const accountAPI = getSimpleAccount(
     provider,
     config.signingKey,

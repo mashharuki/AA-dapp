@@ -1,9 +1,6 @@
 import { ethers } from "ethers";
 import {
-  getSimpleAccount,
-  getGasFee,
-  printOp,
-  getHttpRpcClient,
+  getGasFee, getHttpRpcClient, getSimpleAccount, printOp
 } from "../../src";
 // @ts-ignore
 import config from "../../config.json";
@@ -19,6 +16,7 @@ async function main() {
 
   const target = ethers.utils.getAddress(process.argv[2]);
   const value = ethers.utils.parseEther(process.argv[3]);
+  // User Op info
   const op = await accountAPI.createSignedUserOp({
     target,
     value,

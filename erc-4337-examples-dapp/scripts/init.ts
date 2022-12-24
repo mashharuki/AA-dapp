@@ -1,12 +1,19 @@
+import * as dotenv from 'dotenv';
 import fs from "fs/promises";
 import path from "path";
 import prettier from "prettier";
-import { ethers } from "ethers";
 
+dotenv.config();
+
+/**
+ * init config
+ * entry point : 0x78d4f01f56b982a3B03C4E127A5D3aFa8EBee686
+ * you must overwrite bundlerURL 
+ */
 const INIT_CONFIG = {
-  bundlerUrl: "http://localhost:4337",
+  bundlerUrl: process.env.BUNDLER_URL, // http://localhost:4337
   rpcUrl: "https://rpc-mumbai.maticvigil.com/",
-  signingKey: new ethers.Wallet(ethers.utils.randomBytes(32)).privateKey,
+  signingKey: process.env.PRIVATE_KEY,
   entryPoint: "0x78d4f01f56b982a3B03C4E127A5D3aFa8EBee686",
   simpleAccountFactory: "0xe19E9755942BB0bD0cCCCe25B1742596b8A8250b",
 };
